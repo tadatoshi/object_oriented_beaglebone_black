@@ -1,1 +1,1 @@
-require 'beaglebone-black-ruby'
+require 'beaglebone_black_ruby'

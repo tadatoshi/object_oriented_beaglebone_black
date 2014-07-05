@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'beaglebone/black/ruby/version'
+require 'beaglebone_black_ruby/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "beaglebone-black-ruby"
-  spec.version       = Beaglebone::Black::Ruby::VERSION
+  spec.name          = "beaglebone_black_ruby"
+  spec.version       = BeagleboneBlackRuby::VERSION
   spec.authors       = ["Tadatoshi Takahashi"]
   spec.email         = ["tadatoshi@gmail.com"]
   spec.summary       = %q{Performs accessing GPIO, etc. on BeagleBone Black through Ruby.}
