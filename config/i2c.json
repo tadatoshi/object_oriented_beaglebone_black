@@ -1,0 +1,26 @@
+// Based on https://github.com/jadonk/bonescript/blob/master/src/bone.js
+// The content is copied from there and key "i2c" is added. 
+// The idea of adding that key to make the JSON structure in this file is coming from 
+// https://github.com/Sparkboxx/bbb/blob/master/resources/pin_mappings.json
+{ "i2c" : {
+    "/dev/i2c-0": {
+    },
+    "/dev/i2c-1": {
+        "devicetree": "BB-I2C1",
+        "path": "/dev/i2c-2",
+        "sda": "P9_18",
+        "scl": "P9_17"
+    },
+    "/dev/i2c-1a": {
+        "devicetree": "BB-I2C1A",
+        "path": "/dev/i2c-2",
+        "sda": "P9_26",
+        "scl": "P9_24"
+    },
+    "/dev/i2c-2": {
+        "path": "/dev/i2c-1",
+        "sda": "P9_20",
+        "scl": "P9_19"
+    }
+  }
+}

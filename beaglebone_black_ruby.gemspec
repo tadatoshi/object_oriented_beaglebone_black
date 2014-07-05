@@ -12,11 +12,14 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Performs accessing GPIO, etc. on BeagleBone Black through Ruby.}
   spec.homepage      = ""
   spec.license       = "MIT"
+  spec.required_ruby_version = '>= 2.1.2'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "activesupport"
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"

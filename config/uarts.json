@@ -1,0 +1,31 @@
+// Based on https://github.com/jadonk/bonescript/blob/master/src/bone.js
+// The content is copied from there and key uarts" is added. 
+// The idea of adding that key to make the JSON structure in this file is coming from 
+// https://github.com/Sparkboxx/bbb/blob/master/resources/pin_mappings.json
+{ "uarts" : {
+    "/dev/ttyO0": {
+    },
+    "/dev/ttyO1": {
+        "devicetree": "BB-UART1",
+        "rx": "P9_26",
+        "tx": "P9_24"
+    },
+    "/dev/ttyO2": {
+        "devicetree": "BB-UART2",
+        "rx": "P9_22",
+        "tx": "P9_21"
+    },
+    "/dev/ttyO3": {
+    },
+    "/dev/ttyO4": {
+        "devicetree": "BB-UART4",
+        "rx": "P9_11",
+        "tx": "P9_13"
+    },
+    "/dev/ttyO5": {
+        "devicetree": "BB-UART5",
+        "rx": "P8_38",
+        "tx": "P8_37"
+    }
+  }
+}
