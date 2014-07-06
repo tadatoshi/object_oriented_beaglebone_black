@@ -14,9 +14,9 @@ describe BeagleboneBlackRuby::Led do
 
     led_0 = BeagleboneBlackRuby::Led.new(led)
 
-    pending
-
-    led_0.pin_mode('out')
+    # Instead of pin_mode(pin_name, pin_mode), setting the pin_mode is responsibility of pin object (Led here). 
+    # i.e. ordinary Object-Oriented way. 
+    led_0.pin_mode = 'out'
 
 
   end
