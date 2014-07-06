@@ -10,6 +10,7 @@ BEAGLEBONE_BLACK_RUBY_CONFIG = YAML.load_file(File.join(BEAGLEBONE_BLACK_RUBY_RO
 BEAGLEBONE_BLACK_RUBY_CONFIG.deep_symbolize_keys!
 
 require 'beaglebone_black_ruby/pin_mappings'
+require 'beaglebone_black_ruby/io'
 require 'beaglebone_black_ruby/led'
 
 module BeagleboneBlackRuby

@@ -3,6 +3,7 @@ require 'fileutils'
 module BeagleboneBlackRuby
   class Led
     include BeagleboneBlackRuby::PinMappings
+    include BeagleboneBlackRuby::IO
 
     LED_RELATIVE_DIRECTORY_PATTERN = "leds/beaglebone:green:%s"
     TRIGGER_FILENAME = "trigger"
@@ -21,13 +22,9 @@ module BeagleboneBlackRuby
     end
 
     private
-      def write_to_io_file(filename, value)
+      def file_directory_path
         internal_led_name = property_hash(@led_name)[:led]
-        file_directory_path = File.join(BEAGLEBONE_BLACK_RUBY_CONFIG[:io_root_directory], sprintf(LED_RELATIVE_DIRECTORY_PATTERN, internal_led_name))
-        FileUtils.mkdir_p(file_directory_path, mode: 0700) unless Dir.exists?(file_directory_path)
-        file_path = File.join(file_directory_path, filename)
-        
-        open(file_path, "w").write(value) 
+        File.join(BEAGLEBONE_BLACK_RUBY_CONFIG[:io_root_directory], sprintf(LED_RELATIVE_DIRECTORY_PATTERN, internal_led_name))
       end
 
   end
