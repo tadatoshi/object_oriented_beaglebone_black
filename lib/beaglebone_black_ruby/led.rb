@@ -7,6 +7,7 @@ module BeagleboneBlackRuby
 
     LED_RELATIVE_DIRECTORY_PATTERN = "leds/beaglebone:green:%s"
     TRIGGER_FILENAME = "trigger"
+    GPIO_FILENAME = "brightness"
 
     def initialize(led_name)
       @led_name = led_name
@@ -21,10 +22,23 @@ module BeagleboneBlackRuby
       end
     end
 
+    def digital_write(state)
+      write_to_io_file(GPIO_FILENAME, state)
+    end
+
+    def state
+      state = read_from_io_file(GPIO_FILENAME)
+      begin
+        state.to_i
+      rescue
+        state
+      end
+    end
+
     private
       def file_directory_path
         internal_led_name = property_hash(@led_name)[:led]
-        File.join(BEAGLEBONE_BLACK_RUBY_CONFIG[:io_root_directory], sprintf(LED_RELATIVE_DIRECTORY_PATTERN, internal_led_name))
+        File.expand_path(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG[:io_root_directory], sprintf(LED_RELATIVE_DIRECTORY_PATTERN, internal_led_name)))
       end
 
   end
