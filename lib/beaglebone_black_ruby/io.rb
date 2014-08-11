@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module BeagleboneBlackRuby
   module IO
 

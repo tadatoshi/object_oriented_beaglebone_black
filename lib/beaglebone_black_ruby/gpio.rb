@@ -3,7 +3,7 @@ module BeagleboneBlackRuby
 
     def initialize(pin_number)
       @pin_number = pin_number
-      @gpio_directory = File.join(BEAGLEBONE_BLACK_RUBY_ROOT, BEAGLEBONE_BLACK_RUBY_CONFIG["io_root_directory"], "gpio")
+      @gpio_directory = File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["io_root_directory"], "gpio")
     end
 
     def export

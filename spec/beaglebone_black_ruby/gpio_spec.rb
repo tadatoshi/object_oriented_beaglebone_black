@@ -4,7 +4,7 @@ require 'fileutils'
 describe BeagleboneBlackRuby::Gpio, gpio: true do
 
   before(:each) do
-    @temp_gpio_directory = File.join(BEAGLEBONE_BLACK_RUBY_ROOT, BEAGLEBONE_BLACK_RUBY_CONFIG["io_root_directory"], "gpio")
+    @temp_gpio_directory = File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["io_root_directory"], "gpio")
 
     # In order to run this spec example in the real environment, the directories and files that already exist there are not created in that case. 
     if ENV["BEAGLEBONE_BLACK_RUBY_ENV"] == 'test'

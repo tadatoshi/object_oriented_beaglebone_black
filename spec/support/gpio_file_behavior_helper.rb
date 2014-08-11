@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module GpioFileBehaviorHelper
 
   # In Embedded Linux, when a GPIO pin number is written to /sys/class/gpio/export file, 
@@ -8,7 +10,7 @@ module GpioFileBehaviorHelper
     temp_specific_gpio_directory = File.join(temp_gpio_directory, "gpio#{gpio_pin_number}")
 
     unless Dir.exists?(temp_specific_gpio_directory)
-      Dir.mkdir(temp_specific_gpio_directory, 0700)
+      FileUtils.mkdir_p(temp_specific_gpio_directory, mode: 0700)
 
       FileUtils.touch(File.join(temp_specific_gpio_directory, "direction"))
       File.chmod(0700, File.join(temp_specific_gpio_directory, "direction")) # Not same as the real one but I prefer for a file to have only a user permission
@@ -29,7 +31,7 @@ module GpioFileBehaviorHelper
 
   private
     def temp_gpio_directory
-      File.join(BEAGLEBONE_BLACK_RUBY_ROOT, BEAGLEBONE_BLACK_RUBY_CONFIG["io_root_directory"], "gpio")
+      File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["io_root_directory"], "gpio")
     end
 
 end

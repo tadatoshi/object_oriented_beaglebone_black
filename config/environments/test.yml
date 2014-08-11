@@ -1,1 +1,1 @@
-io_root_directory: tmp/sys/class
+io_root_directory: <%= BEAGLEBONE_BLACK_RUBY_ROOT %>/tmp/sys/class

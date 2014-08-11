@@ -1,5 +1,3 @@
-require 'fileutils'
-
 module BeagleboneBlackRuby
   class Led
     include BeagleboneBlackRuby::PinMappings
