@@ -23,7 +23,7 @@ module BeagleboneBlackRuby
         file_content = nil
         # Using this instead of simple "File.open(file_path).read" in order to close file after reading. 
         File.open(file_path) do |file|
-          file_content = file.read
+          file_content = file.read.strip
         end
         file_content
       end

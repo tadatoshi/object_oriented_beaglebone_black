@@ -19,10 +19,10 @@ module BeagleboneBlackRuby
     end
 
     def direction
-      File.open(File.join(@gpio_directory, "gpio#{@pin_number}", "direction"), "r").read
-      # direction = nil
-      # File.open(File.join(@gpio_directory, "gpio#{@pin_number}", "direction"), "r") { |file| direction = file.read }
-      # direction
+      # Using this instead of simple "File.open(file_path).read" in order to close file after reading.
+      direction = nil
+      File.open(File.join(@gpio_directory, "gpio#{@pin_number}", "direction"), "r") { |file| direction = file.read.strip }
+      direction
     end
 
     def value=(value)
@@ -30,10 +30,10 @@ module BeagleboneBlackRuby
     end
 
     def value
-      File.open(File.join(@gpio_directory, "gpio#{@pin_number}", "value"), "r").read.to_i
-      # value = nil
-      # File.open(File.join(@gpio_directory, "gpio#{@pin_number}", "value"), "r") { |file| value = file.read.to_i }
-      # value
+      # Using this instead of simple "File.open(file_path).read" in order to close file after reading.
+      value = nil
+      File.open(File.join(@gpio_directory, "gpio#{@pin_number}", "value"), "r") { |file| value = file.read.strip.to_i }
+      value
     end
 
   end
