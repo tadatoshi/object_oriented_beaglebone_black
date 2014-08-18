@@ -40,11 +40,14 @@ describe BeagleboneBlackRuby::Pwm, pwm: true do
 
       pwm.duty_cycle = 0.5
 
+      expect(pwm.polarity).to eq(BeagleboneBlackRuby::Pwm::Polarity::DIRECT)
       expect(pwm.duty_cycle).to eq(0.5)
 
       sleep(2)
 
       pwm.duty_cycle = 0.225
+
+      expect(pwm.polarity).to eq(BeagleboneBlackRuby::Pwm::Polarity::DIRECT)
       expect(pwm.duty_cycle).to eq(0.225)
 
     end

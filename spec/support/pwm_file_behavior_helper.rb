@@ -14,6 +14,9 @@ module PwmFileBehaviorHelper
       FileUtils.touch(File.join(temp_specific_pwm_directory, "duty"))
       File.chmod(0700, File.join(temp_specific_pwm_directory, "duty"))
       File.open(File.join(temp_specific_pwm_directory, "duty"), 'w') {|file| file.write(250000) }
+      FileUtils.touch(File.join(temp_specific_pwm_directory, "polarity"))
+      File.chmod(0700, File.join(temp_specific_pwm_directory, "polarity"))
+      File.open(File.join(temp_specific_pwm_directory, "polarity"), 'w') {|file| file.write(BeagleboneBlackRuby::Pwm::Polarity::INVERSE) }      
     end    
   end
 

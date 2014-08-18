@@ -3,6 +3,11 @@ require 'bigdecimal'
 module BeagleboneBlackRuby
   class Pwm
 
+    module Polarity
+      DIRECT = 0
+      INVERSE = 1
+    end    
+
     DUTY_VALUE_PER_ONE_HUNDREDTH = BigDecimal("5000")
 
     def initialize(pin_key)
@@ -21,6 +26,7 @@ module BeagleboneBlackRuby
 
     # duty_cycle (value between 0 and 1)
     def duty_cycle=(duty_cycle)
+      self.polarity = BeagleboneBlackRuby::Pwm::Polarity::DIRECT
       internal_duty_value = (BigDecimal(duty_cycle.to_s) * BigDecimal("100") * DUTY_VALUE_PER_ONE_HUNDREDTH).to_i
       File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "duty"), "w") { |file| file.write(internal_duty_value) }
     end
@@ -31,6 +37,16 @@ module BeagleboneBlackRuby
       File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "duty"), "r") { |file| internal_duty_value = file.read.strip }
       duty_cycle = (BigDecimal(internal_duty_value.to_s) / DUTY_VALUE_PER_ONE_HUNDREDTH / BigDecimal("100")).to_f
       duty_cycle
+    end
+
+    def polarity=(polarity)
+      File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "polarity"), "w") { |file| file.write(polarity) }
+    end
+
+    def polarity
+      internal_polarity_value = nil
+      File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "polarity"), "r") { |file| internal_polarity_value = file.read.strip.to_i }
+      internal_polarity_value
     end
 
   end
