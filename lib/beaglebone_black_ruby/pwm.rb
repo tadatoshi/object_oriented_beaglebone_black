@@ -21,7 +21,7 @@ module BeagleboneBlackRuby
 
     # duty_cycle (value between 0 and 1)
     def duty_cycle=(duty_cycle)
-      internal_duty_value = BigDecimal(duty_cycle.to_s) * BigDecimal("100") * DUTY_VALUE_PER_ONE_HUNDREDTH
+      internal_duty_value = (BigDecimal(duty_cycle.to_s) * BigDecimal("100") * DUTY_VALUE_PER_ONE_HUNDREDTH).to_i
       File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "duty"), "w") { |file| file.write(internal_duty_value) }
     end
 
