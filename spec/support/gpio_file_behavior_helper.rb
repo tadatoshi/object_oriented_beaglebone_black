@@ -3,8 +3,7 @@ require 'fileutils'
 module GpioFileBehaviorHelper
 
   # In Embedded Linux, when a GPIO pin number is written to /sys/class/gpio/export file, 
-  # a directory with the name including the pin number is created with the various files e.g. direction, value, etc. 
-  # are created underneath the directory. 
+  # a directory with the name including the pin number is created with the various files e.g. direction, value, etc. underneath the directory. 
   # This method is for performing that automatic behavior in the local test environment. 
   def mimic_internal_export(gpio_pin_number)
     temp_specific_gpio_directory = File.join(temp_gpio_directory, "gpio#{gpio_pin_number}")

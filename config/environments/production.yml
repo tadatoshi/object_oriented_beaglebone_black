@@ -1,1 +1,3 @@
 io_root_directory: /sys/class
+slots_directory: /sys/devices/bone_capemgr.9
+device_directory: /sys/devices/ocp.3

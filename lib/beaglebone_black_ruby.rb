@@ -18,6 +18,7 @@ require 'beaglebone_black_ruby/io/direction'
 require 'beaglebone_black_ruby/io/value'
 require 'beaglebone_black_ruby/gpio'
 require 'beaglebone_black_ruby/led'
+require 'beaglebone_black_ruby/pwm'
 
 module BeagleboneBlackRuby
   # Your code goes here...
