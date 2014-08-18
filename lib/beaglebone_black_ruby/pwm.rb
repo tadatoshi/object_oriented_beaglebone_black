@@ -1,5 +1,9 @@
+require 'bigdecimal'
+
 module BeagleboneBlackRuby
   class Pwm
+
+    DUTY_VALUE_PER_ONE_HUNDREDTH = BigDecimal("5000")
 
     def initialize(pin_key)
       @pin_key = pin_key
@@ -15,14 +19,17 @@ module BeagleboneBlackRuby
       File.open(@slots_file_path, "a") { |file| file.write("bone_pwm_#{@pin_key}") }
     end
 
-    def duty_cycle=(duty_cycle) 
-      File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "duty"), "w") { |file| file.write(duty_cycle) }
+    # duty_cycle (value between 0 and 1)
+    def duty_cycle=(duty_cycle)
+      internal_duty_value = BigDecimal(duty_cycle.to_s) * BigDecimal("100") * DUTY_VALUE_PER_ONE_HUNDREDTH
+      File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "duty"), "w") { |file| file.write(internal_duty_value) }
     end
 
     def duty_cycle
       # Using this instead of simple "File.open(file_path).read" in order to close file after reading.
-      duty_cycle = nil
-      File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "duty"), "r") { |file| duty_cycle = file.read.strip.to_f }
+      internal_duty_value = nil
+      File.open(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.15", "duty"), "r") { |file| internal_duty_value = file.read.strip }
+      duty_cycle = (BigDecimal(internal_duty_value.to_s) / DUTY_VALUE_PER_ONE_HUNDREDTH / BigDecimal("100")).to_f
       duty_cycle
     end
 
