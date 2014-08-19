@@ -23,7 +23,9 @@ module BeagleboneBlackRuby
     end
 
     def value
-      (BigDecimal(raw_value.to_s) * (BigDecimal("1.8") / BigDecimal("1.0"))).to_f
+      # The raw_value is in the range of 0 to 1.8[V]. 
+      # The value is in the range of 0 to 1.0. 
+      (BigDecimal(raw_value.to_s) * (BigDecimal("1.0") / BigDecimal("1.8"))).to_f
     end
 
     private

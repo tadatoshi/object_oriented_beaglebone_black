@@ -29,7 +29,7 @@ describe "BeagleboneBlackRuby::AnalogInput", analog_input: true do
 
     pin_key = "P9_40"
     expected_raw_value = (BigDecimal("1630") / BigDecimal("1000")).to_f
-    expected_value = (BigDecimal(expected_raw_value.to_s) * (BigDecimal("1.8")/BigDecimal("1"))).to_f
+    expected_value = (BigDecimal(expected_raw_value.to_s) * (BigDecimal("1.0")/BigDecimal("1.8"))).to_f
 
     analog_input = BeagleboneBlackRuby::AnalogInput.new(pin_key)
 
