@@ -9,4 +9,5 @@ Dir[File.join(File.expand_path('support/**/*.rb', __dir__))].each {|f| require f
 RSpec.configure do |c|
   c.include GpioFileBehaviorHelper, gpio: true
   c.include PwmFileBehaviorHelper, pwm: true
+  c.include AnalogInputFileBehaviorHelper, analog_input: true
 end

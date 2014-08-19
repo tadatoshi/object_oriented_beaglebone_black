@@ -10,10 +10,15 @@ module BeagleboneBlackRuby
       ::BEAGLEBONE_BLACK_RUBY_PIN_INDEX_ARRAY ||= JSON.load(File.read(File.join(BEAGLEBONE_BLACK_RUBY_ROOT, "config", "pin_index.json")))["pinIndex"]
     end
 
-    def property_hash(name)
+    def property_hash(name: nil, key: nil)
       load_pin_index_array
 
-      ::BEAGLEBONE_BLACK_RUBY_PIN_INDEX_ARRAY.select { |property_hash| property_hash["name"] == name }.first
+      if !name.nil?
+        ::BEAGLEBONE_BLACK_RUBY_PIN_INDEX_ARRAY.select { |property_hash| property_hash["name"] == name }.first
+      elsif !key.nil?
+        ::BEAGLEBONE_BLACK_RUBY_PIN_INDEX_ARRAY.select { |property_hash| property_hash["key"] == key }.first
+      end
+
     end
 
   end

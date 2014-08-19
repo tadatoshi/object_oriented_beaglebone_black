@@ -32,7 +32,7 @@ describe BeagleboneBlackRuby::Pwm, pwm: true do
 
       pwm = BeagleboneBlackRuby::Pwm.new(pwm_pin_key)
 
-      # Since the real "export" file creates a directory structure when a pin number is written to it, 
+      # Since the real "slots" file creates a directory structure when a device tree overlay is written to it, 
       # in the "test" environment with a regular file, it is mimiced here.
       mimic_internal_pwm_directory_creation(pwm_pin_key) if ENV["BEAGLEBONE_BLACK_RUBY_ENV"] == 'test'
 
