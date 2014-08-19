@@ -37,7 +37,7 @@ describe "BeagleboneBlackRuby::AnalogInput", analog_input: true do
     # in the "test" environment with a regular file, it is mimiced here.
     mimic_internal_analog_input_directory_creation(pin_key, expected_raw_value) if ENV["BEAGLEBONE_BLACK_RUBY_ENV"] == 'test'
 
-    expect(Dir.exists?(File.join(@device_directory, "helper.16"))).to be true
+    expect(Dir.exists?(Dir["#{File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "helper.")}*"].first)).to be true
 
     # Instead of analog_read(pin_name), reading the value is responsibility of pin object. 
     # i.e. ordinary Object-Oriented way. 
