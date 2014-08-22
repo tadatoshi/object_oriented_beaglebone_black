@@ -17,7 +17,7 @@ module BeagleboneBlackRuby
 
     def raw_value
       internal_raw_value = nil
-      File.open(File.join(analog_input_file_path, pin_name(@pin_key)), "r") { |file| internal_raw_value = file.read.strip }
+      File.open(File.join(analog_input_directory, pin_name(@pin_key)), "r") { |file| internal_raw_value = file.read.strip }
       raw_value = (BigDecimal(internal_raw_value.to_s) / BigDecimal("1000")).to_f
       raw_value
     end
@@ -33,7 +33,7 @@ module BeagleboneBlackRuby
         property_hash(key: pin_key)["name"]
       end
 
-      def analog_input_file_path
+      def analog_input_directory
         Dir["#{File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "helper.")}*"].first
       end
 
