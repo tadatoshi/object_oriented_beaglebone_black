@@ -22,7 +22,15 @@ There are three reasons.
 
 If you are trying to decide which gem to use without spending too much time to investigate each one of them, I would suggest eliminate this one from your list so that there is one less gem to investigate. 
 
-But you are always welcome to use this gem. You may find that this one can serve for your purpose. 
+The important point in this gem is that everything is Object-Oriented. 
+In other words, controlling hardware in Object-Oriented way, treating everything as an Object. 
+For example, Pin is an Object with properties and functions for the pin. 
+If you want to do something with a pin, you instantiate Pin Object and ask it to perform operations on it. Pin object takes care of its properties, i.e. the values associated with it and takes care of performing the operations. 
+The features of Object-Oriented programming, such as Inheritance, etc. and techniques like Composition (and going further, Patterns), make the code organized and reduce duplication. Makes testing is easier. 
+
+Especially, the bigger your code becomes, the more you get the benefit of Object-Oriented programming. It's easier to trace what the code is doing among the big code base and it's easier to modify the code without influencing the other codes in the big code base. 
+
+So you are always welcome to use this gem. You may find that this one can serve for your purpose. 
 
 ## Installation
 
@@ -40,7 +48,59 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. GPIO. 
+
+   Example:
+
+   require 'beaglebone_black_ruby'
+
+   led_gpio_pin_number = 60
+   button_gpio_pin_number = 15
+
+   led_gpio = BeagleboneBlackRuby::Gpio.new(led_gpio_pin_number)
+
+   led_gpio.export
+
+   led_gpio.direction = BeagleboneBlackRuby::IO::Direction::OUT
+
+   led_gpio.value = BeagleboneBlackRuby::IO::Value::HIGH
+
+   led_gpio.value  # Read the value. HIGH (1) as set above. 
+
+   led_gpio.value = BeagleboneBlackRuby::IO::Value::LOW
+
+   led_gpio.value  # Read the value. LOW (0) as set above. 
+
+   led_gpio.unexport
+
+2. Analog input
+   Example:
+
+   require 'beaglebone_black_ruby'
+
+   pin_key = "P9_40"
+
+   analog_input = BeagleboneBlackRuby::AnalogInput.new(pin_key)
+
+   analog_input.raw_value  # Read the raw voltage value in the range of 0 and 1.8[V].
+
+   analog_input.value  # Read the relative value between 0 and 1. 
+
+3. PWM
+
+   Example: 
+
+   require 'beaglebone_black_ruby'
+
+   pwm_pin_key = "P9_14"
+
+   pwm = BeagleboneBlackRuby::Pwm.new(pwm_pin_key)
+
+   pwm.duty_cycle = 0.5
+
+   pwm.polarity  # Read the polarity. The default is direct (BeagleboneBlackRuby::Pwm::Polarity::DIRECT)
+
+   pwm.duty_cycle  # Read the duty cycle. 0.5 as set above. 
 
 ## Contributing
 

@@ -1,3 +1,5 @@
+require 'bigdecimal'
+
 module BeagleboneBlackRuby
   class AnalogInput
     include BeagleboneBlackRuby::PinMappings
