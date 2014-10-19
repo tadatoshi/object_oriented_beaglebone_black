@@ -8,7 +8,7 @@ module VoltageMeasurement
     end
 
     def value
-      @analog_input.raw_value * BigDecimal("11")
+      (@analog_input.raw_value * BigDecimal("11")).to_f
     end
 
   end
