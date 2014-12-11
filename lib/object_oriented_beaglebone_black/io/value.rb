@@ -1,4 +1,4 @@
-module BeagleboneBlackRuby
+module ObjectOrientedBeagleboneBlack
   module IO
     module Value
 

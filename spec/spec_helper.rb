@@ -1,6 +1,6 @@
-ENV["BEAGLEBONE_BLACK_RUBY_ENV"] ||= 'test'
+ENV["OBJECT_ORIENTED_BEAGLEBONE_BLACK_ENV"] ||= 'test'
 
-require 'beaglebone_black_ruby'
+require 'object_oriented_beaglebone_black'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

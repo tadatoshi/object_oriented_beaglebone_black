@@ -1,4 +1,4 @@
-require 'beaglebone_black_ruby'
+require 'object_oriented_beaglebone_black'
 
 require 'current_measurement/current_input'
 

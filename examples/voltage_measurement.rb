@@ -1,4 +1,4 @@
-require 'beaglebone_black_ruby'
+require 'object_oriented_beaglebone_black'
 
 require 'voltage_measurement/voltage_input'
 

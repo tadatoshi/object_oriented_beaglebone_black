@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'beaglebone_black_ruby/version'
+require 'object_oriented_beaglebone_black/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "beaglebone_black_ruby"
-  spec.version       = BeagleboneBlackRuby::VERSION
+  spec.name          = "object_oriented_beaglebone_black"
+  spec.version       = ObjectOrientedBeagleboneBlack::VERSION
   spec.authors       = ["Tadatoshi Takahashi"]
   spec.email         = ["tadatoshi@gmail.com"]
-  spec.summary       = %q{Performs accessing GPIO, etc. on BeagleBone Black through Ruby.}
-  spec.description   = %q{Performs accessing GPIO, etc. on BeagleBone Black through Ruby.}
+  spec.summary       = %q{For using BeagleBone Black in Object-Oriented way through Ruby.}
+  spec.description   = %q{Performs accessing GPIO, etc. in Object-Oriented way on BeagleBone Black through Ruby.}
   spec.homepage      = ""
   spec.license       = "MIT"
   spec.required_ruby_version = '>= 2.1.2'

@@ -13,11 +13,11 @@ module GpioFileBehaviorHelper
 
       FileUtils.touch(File.join(temp_specific_gpio_directory, "direction"))
       File.chmod(0700, File.join(temp_specific_gpio_directory, "direction")) # Not same as the real one but I prefer for a file to have only a user permission
-      File.open(File.join(temp_specific_gpio_directory, "direction"), "w") { |file| file.write(BeagleboneBlackRuby::IO::Direction::IN) }
+      File.open(File.join(temp_specific_gpio_directory, "direction"), "w") { |file| file.write(ObjectOrientedBeagleboneBlack::IO::Direction::IN) }
       
       FileUtils.touch(File.join(temp_specific_gpio_directory, "value"))
       File.chmod(0700, File.join(temp_specific_gpio_directory, "value")) # Not same as the real one but I prefer for a file to have only a user permission
-      File.open(File.join(temp_specific_gpio_directory, "value"), "w") { |file| file.write(BeagleboneBlackRuby::IO::Value::LOW) }
+      File.open(File.join(temp_specific_gpio_directory, "value"), "w") { |file| file.write(ObjectOrientedBeagleboneBlack::IO::Value::LOW) }
     end
 
   end
@@ -30,7 +30,7 @@ module GpioFileBehaviorHelper
 
   private
     def temp_gpio_directory
-      File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["io_root_directory"], "gpio")
+      File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["io_root_directory"], "gpio")
     end
 
 end

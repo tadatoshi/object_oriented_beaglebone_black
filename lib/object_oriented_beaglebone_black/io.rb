@@ -1,6 +1,6 @@
 require 'fileutils'
 
-module BeagleboneBlackRuby
+module ObjectOrientedBeagleboneBlack
   module IO
 
     def file_directory_path

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe BeagleboneBlackRuby::PinMappings do
+describe ObjectOrientedBeagleboneBlack::PinMappings do
   
   class TestPinMappingsClass
-    include BeagleboneBlackRuby::PinMappings
+    include ObjectOrientedBeagleboneBlack::PinMappings
   end
 
   before(:each) do

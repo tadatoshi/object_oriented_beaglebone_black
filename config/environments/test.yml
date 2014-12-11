@@ -1,3 +1,3 @@
-io_root_directory: <%= BEAGLEBONE_BLACK_RUBY_ROOT %>/tmp/sys/class
-slots_directory: <%= BEAGLEBONE_BLACK_RUBY_ROOT %>/tmp/sys/devices/bone_capemgr.9
-device_directory: <%= BEAGLEBONE_BLACK_RUBY_ROOT %>/tmp/sys/devices/ocp.3
+io_root_directory: <%= OBJECT_ORIENTED_BEAGLEBONE_BLACK_ROOT %>/tmp/sys/class
+slots_directory: <%= OBJECT_ORIENTED_BEAGLEBONE_BLACK_ROOT %>/tmp/sys/devices/bone_capemgr.9
+device_directory: <%= OBJECT_ORIENTED_BEAGLEBONE_BLACK_ROOT %>/tmp/sys/devices/ocp.3

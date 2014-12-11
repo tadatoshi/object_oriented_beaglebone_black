@@ -1,7 +1,7 @@
-module BeagleboneBlackRuby
+module ObjectOrientedBeagleboneBlack
   class Led
-    include BeagleboneBlackRuby::PinMappings
-    include BeagleboneBlackRuby::IO
+    include ObjectOrientedBeagleboneBlack::PinMappings
+    include ObjectOrientedBeagleboneBlack::IO
 
     LED_RELATIVE_DIRECTORY_PATTERN = "leds/beaglebone:green:%s"
     TRIGGER_FILENAME = "trigger"
@@ -36,7 +36,7 @@ module BeagleboneBlackRuby
     private
       def file_directory_path
         internal_led_name = property_hash(name: @led_name)["led"]
-        File.expand_path(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["io_root_directory"], sprintf(LED_RELATIVE_DIRECTORY_PATTERN, internal_led_name)))
+        File.expand_path(File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["io_root_directory"], sprintf(LED_RELATIVE_DIRECTORY_PATTERN, internal_led_name)))
       end
 
   end

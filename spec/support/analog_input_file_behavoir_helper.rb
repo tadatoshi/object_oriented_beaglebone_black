@@ -2,13 +2,13 @@ require 'fileutils'
 require 'bigdecimal'
 
 module AnalogInputFileBehaviorHelper
-  include BeagleboneBlackRuby::PinMappings
+  include ObjectOrientedBeagleboneBlack::PinMappings
 
   # In Embedded Linux, when a Device Tree Overlay for the specific Analog input PIN key is activated, 
   # a directory with the name including the pin key is created with the various files e.g. AIN0, etc. underneath the directory. 
   # This method is for performing that automatic behavior in the local test environment. 
   def mimic_internal_analog_input_directory_creation(pin_key, raw_value)
-    temp_specific_analog_input_directory = File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "helper.16")
+    temp_specific_analog_input_directory = File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["device_directory"], "helper.16")
 
     unless Dir.exists?(temp_specific_analog_input_directory)
       FileUtils.mkdir_p(temp_specific_analog_input_directory, mode: 0700)

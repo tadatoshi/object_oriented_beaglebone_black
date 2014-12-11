@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in beaglebone-black-ruby.gemspec
+# Specify your gem's dependencies in object_oriented_beaglebone_black.gemspec
 gemspec
 
 group :development, :test do

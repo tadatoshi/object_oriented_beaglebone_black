@@ -1,12 +1,12 @@
 require 'bigdecimal'
 
-module BeagleboneBlackRuby
+module ObjectOrientedBeagleboneBlack
   class AnalogInput
-    include BeagleboneBlackRuby::PinMappings
+    include ObjectOrientedBeagleboneBlack::PinMappings
 
     def initialize(pin_key)
       @pin_key = pin_key
-      @slots_file_path = File.join(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["slots_directory"], "slots"))
+      @slots_file_path = File.join(File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["slots_directory"], "slots"))
 
       activate_device_tree_overlays      
     end 
@@ -36,7 +36,7 @@ module BeagleboneBlackRuby
       end
 
       def analog_input_directory
-        Dir["#{File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "helper.")}*"].first
+        Dir["#{File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["device_directory"], "helper.")}*"].first
       end
 
   end

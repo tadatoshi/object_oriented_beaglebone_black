@@ -1,6 +1,6 @@
 require 'bigdecimal'
 
-module BeagleboneBlackRuby
+module ObjectOrientedBeagleboneBlack
   class Pwm
 
     module Polarity
@@ -12,7 +12,7 @@ module BeagleboneBlackRuby
 
     def initialize(pin_key)
       @pin_key = pin_key
-      @slots_file_path = File.join(File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["slots_directory"], "slots"))
+      @slots_file_path = File.join(File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["slots_directory"], "slots"))
 
       activate_device_tree_overlays
     end
@@ -26,7 +26,7 @@ module BeagleboneBlackRuby
 
     # duty_cycle (value between 0 and 1)
     def duty_cycle=(duty_cycle)
-      self.polarity = BeagleboneBlackRuby::Pwm::Polarity::DIRECT
+      self.polarity = ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT
       internal_duty_value = (BigDecimal(duty_cycle.to_s) * BigDecimal("100") * DUTY_VALUE_PER_ONE_HUNDREDTH).to_i
       File.open(File.join(pwm_directory, "duty"), "w") { |file| file.write(internal_duty_value) }
     end
@@ -51,7 +51,7 @@ module BeagleboneBlackRuby
 
     private
       def pwm_directory
-        Dir["#{File.join(BEAGLEBONE_BLACK_RUBY_CONFIG["device_directory"], "pwm_test_#{@pin_key}.")}*"].first
+        Dir["#{File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["device_directory"], "pwm_test_#{@pin_key}.")}*"].first
       end    
 
   end

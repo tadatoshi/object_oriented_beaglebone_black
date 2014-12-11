@@ -4,7 +4,7 @@ module CurrentMeasurement
   class CurrentInput
 
     def initialize(pin_key)
-      @analog_input = BeagleboneBlackRuby::AnalogInput.new(pin_key)
+      @analog_input = ObjectOrientedBeagleboneBlack::AnalogInput.new(pin_key)
     end
 
     def value
