@@ -33,7 +33,7 @@ describe ObjectOrientedBeagleboneBlack::Pwm, pwm: true do
       pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
 
       # Since the real "slots" file creates a directory structure when a device tree overlay is written to it, 
-      # in the "test" environment with a regular file, it is mimiced here.
+      # in the "test" environment with a regular file, it is mimicked here.
       mimic_internal_pwm_directory_creation(pwm_pin_key) if ENV["OBJECT_ORIENTED_BEAGLEBONE_BLACK_ENV"] == 'test'
 
       expect(Dir.exists?(File.join(@device_directory, "pwm_test_#{pwm_pin_key}.15"))).to be true
@@ -51,6 +51,24 @@ describe ObjectOrientedBeagleboneBlack::Pwm, pwm: true do
       expect(pwm.duty_cycle).to eq(0.225)
 
     end
+
+  end
+
+  it 'should set the period' do
+
+    pwm_pin_key = 'P9_14'
+
+    pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
+
+    # Since the real "slots" file creates a directory structure when a device tree overlay is written to it, 
+    # in the "test" environment with a regular file, it is mimicked here.
+    mimic_internal_pwm_directory_creation(pwm_pin_key) if ENV["OBJECT_ORIENTED_BEAGLEBONE_BLACK_ENV"] == 'test'
+
+    expect(Dir.exists?(File.join(@device_directory, "pwm_test_#{pwm_pin_key}.15"))).to be true
+
+    pwm.period = 10000 # [ns]: nano second
+
+    expect(pwm.period).to eq(10000)
 
   end
 

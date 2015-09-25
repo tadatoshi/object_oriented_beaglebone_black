@@ -49,6 +49,17 @@ module ObjectOrientedBeagleboneBlack
       internal_polarity_value
     end
 
+    def period=(period)
+      File.open(File.join(pwm_directory, "period"), "w") { |file| file.write(period) }
+    end
+
+    # Unit: [ns] (nano second)
+    def period
+      internal_period_value = nil
+      File.open(File.join(pwm_directory, "period"), "r") { |file| internal_period_value = file.read.strip.to_i }
+      internal_period_value
+    end
+
     private
       def pwm_directory
         Dir["#{File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["device_directory"], "pwm_test_#{@pin_key}.")}*"].first

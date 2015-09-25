@@ -5,7 +5,7 @@ This is for using Beaglebone Black in Object-Oriented way through Ruby code.
 There are many Ruby projects in GitHub to do a similar thing. 
 But I have decided to develop my own from scratch this time instead of using an existing one like I always do.
 
-There are three reasons. 
+There are four reasons. 
 
 1. Build my own expertise on controlling Beaglebone Black directly. 
 
@@ -19,11 +19,11 @@ There are three reasons.
 
 3. Many existing ones don't have proper testings. 
 
-   I understand the difficulty of writing a test for a code to control hardware. But less test code makes the source code bulky and not modular. I want to make the code modular naturally by Test-Driven Development. (By Test-Driven Development, the code naturally becomes modular even when not consciously thinking about it by just thinking of making the code work.)
+   I understand the difficulty of writing a test for a code to control hardware. But less test code makes the source code bulky and not modular. I want to make the code modular naturally by Test-Driven Development. (By Test-Driven Development, the code naturally becomes modular even when not consciously thinking about it, by just thinking about making the code work.)
 
 4. Many existing ones for controlling hardware are focusing on Robotics (controlling motors). 
 
-   My objective is for developing a controller for DC-DC converter. Because of it, what makes existing ones good (for robotics) sometimes makes the code I need difficult to write for my objective. 
+   My objective is for developing a controller related to Power Electronics. Because of it, what makes existing ones good (for robotics) sometimes makes the code I need difficult to write for my objective. 
 
 The important point in this gem is that everything is Object-Oriented. 
 In other words, controlling hardware in Object-Oriented way, treating everything as an Object. 
@@ -103,6 +103,10 @@ Or install it yourself as:
    pwm.polarity  # Read the polarity. The default is direct (ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT)
 
    pwm.duty_cycle  # Read the duty cycle. 0.5 as set above. 
+
+   pwm.period = 1000 # Unit is [ns] (nano second)
+
+   pwm.period  # Read the period. 1000[ns] as set above. 
 
 ## Contributing
 

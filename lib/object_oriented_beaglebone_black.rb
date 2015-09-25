@@ -1,3 +1,4 @@
+require 'pry'
 require "object_oriented_beaglebone_black/version"
 require "erb"
 
