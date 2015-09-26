@@ -8,8 +8,6 @@ module ObjectOrientedBeagleboneBlack
       INVERSE = 1
     end    
 
-    DUTY_VALUE_PER_ONE_HUNDREDTH = BigDecimal("5000")
-
     def initialize(pin_key)
       @pin_key = pin_key
       @slots_file_path = File.join(File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["slots_directory"], "slots"))
@@ -27,7 +25,7 @@ module ObjectOrientedBeagleboneBlack
     # duty_cycle (value between 0 and 1)
     def duty_cycle=(duty_cycle)
       self.polarity = ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT
-      internal_duty_value = (BigDecimal(duty_cycle.to_s) * BigDecimal("100") * DUTY_VALUE_PER_ONE_HUNDREDTH).to_i
+      internal_duty_value = (BigDecimal(duty_cycle.to_s) * BigDecimal(period.to_s)).to_i
       File.open(File.join(pwm_directory, "duty"), "w") { |file| file.write(internal_duty_value) }
     end
 
@@ -35,7 +33,7 @@ module ObjectOrientedBeagleboneBlack
       # Using this instead of simple "File.open(file_path).read" in order to close file after reading.
       internal_duty_value = nil
       File.open(File.join(pwm_directory, "duty"), "r") { |file| internal_duty_value = file.read.strip }
-      duty_cycle = (BigDecimal(internal_duty_value.to_s) / DUTY_VALUE_PER_ONE_HUNDREDTH / BigDecimal("100")).to_f
+      duty_cycle = (BigDecimal(internal_duty_value.to_s) / BigDecimal(period.to_s)).to_f
       duty_cycle
     end
 
