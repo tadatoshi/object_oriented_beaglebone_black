@@ -98,15 +98,15 @@ Or install it yourself as:
 
    pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
 
+   pwm.period = 1000 # Unit is \[ns\] (nano second)
+
+   pwm.period  # Read the period. 1000[ns] as set above.    
+
    pwm.duty_cycle = 0.5
 
    pwm.polarity  # Read the polarity. The default is direct (ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT)
 
    pwm.duty_cycle  # Read the duty cycle. 0.5 as set above. 
-
-   pwm.period = 1000 # Unit is [ns] (nano second)
-
-   pwm.period  # Read the period. 1000[ns] as set above. 
 
 ## Contributing
 
