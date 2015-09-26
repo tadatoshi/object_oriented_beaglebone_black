@@ -18,8 +18,10 @@ module ObjectOrientedBeagleboneBlack
     def activate_device_tree_overlays
       # Note: Since slots file acts as an interface to activate Device Tree Overlay, simply writing to it does what needs to be done. 
       #       I'm using appending here so that testing in a local environment becomes straightfoward. 
-      File.open(@slots_file_path, "a") { |file| file.write("am33xx_pwm") }
-      File.open(@slots_file_path, "a") { |file| file.write("bone_pwm_#{@pin_key}") }
+      File.open(@slots_file_path, "a") do |file| 
+        file.write("am33xx_pwm")
+        file.write("bone_pwm_#{@pin_key}")
+      end
     end
 
     # duty_cycle (value between 0 and 1)
