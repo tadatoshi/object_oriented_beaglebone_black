@@ -24,24 +24,6 @@ describe ObjectOrientedBeagleboneBlack::Pwm, pwm: true do
     end
   end
 
-  it 'should set the period' do
-
-    pwm_pin_key = 'P9_14'
-
-    pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
-
-    # Since the real "slots" file creates a directory structure when a device tree overlay is written to it, 
-    # in the "test" environment with a regular file, it is mimicked here.
-    mimic_internal_pwm_directory_creation(pwm_pin_key) if ENV["OBJECT_ORIENTED_BEAGLEBONE_BLACK_ENV"] == 'test'
-
-    expect(Dir.exists?(File.join(@device_directory, "pwm_test_#{pwm_pin_key}.15"))).to be true
-
-    pwm.period = 10000 # [ns]: nano second
-
-    expect(pwm.period).to eq(10000)
-
-  end  
-
   describe "test with same setting as in https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/pwm" do
 
     it "should duty cycle" do
@@ -67,6 +49,51 @@ describe ObjectOrientedBeagleboneBlack::Pwm, pwm: true do
 
       expect(pwm.polarity).to eq(ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT)
       expect(pwm.duty_cycle).to eq(0.225)
+
+    end
+
+  end
+
+  context 'period' do
+
+    it 'should set the period' do
+
+      pwm_pin_key = 'P9_14'
+
+      pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
+
+      # Since the real "slots" file creates a directory structure when a device tree overlay is written to it, 
+      # in the "test" environment with a regular file, it is mimicked here.
+      mimic_internal_pwm_directory_creation(pwm_pin_key) if ENV["OBJECT_ORIENTED_BEAGLEBONE_BLACK_ENV"] == 'test'
+
+      expect(Dir.exists?(File.join(@device_directory, "pwm_test_#{pwm_pin_key}.15"))).to be true
+
+      pwm.period = 10000 # [ns]: nano second
+
+      expect(pwm.period).to eq(10000)
+
+    end
+
+    it 'should set the duty cycle corresponding to the specified period' do
+
+      pwm_pin_key = 'P9_14'
+
+      pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
+
+      # Since the real "slots" file creates a directory structure when a device tree overlay is written to it, 
+      # in the "test" environment with a regular file, it is mimicked here.
+      mimic_internal_pwm_directory_creation(pwm_pin_key) if ENV["OBJECT_ORIENTED_BEAGLEBONE_BLACK_ENV"] == 'test'
+
+      expect(Dir.exists?(File.join(@device_directory, "pwm_test_#{pwm_pin_key}.15"))).to be true
+
+      pwm.period = 1000 # [ns]: nano second
+
+      expect(pwm.period).to eq(1000)
+
+      pwm.duty_cycle = 0.5
+
+      expect(pwm.polarity).to eq(ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT)
+      expect(pwm.duty_cycle).to eq(0.5)      
 
     end
 
