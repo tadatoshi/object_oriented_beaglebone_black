@@ -18,10 +18,16 @@ module ObjectOrientedBeagleboneBlack
     def activate_device_tree_overlays
       # Note: Since slots file acts as an interface to activate Device Tree Overlay, simply writing to it does what needs to be done. 
       #       I'm using appending here so that testing in a local environment becomes straightfoward. 
-      File.open(@slots_file_path, "a") do |file| 
-        file.write("am33xx_pwm")
-        file.write("bone_pwm_#{@pin_key}")
-      end
+      # Note: Closing this file caused an error in BeagleBone Black:
+      #       Errno::ENOENT:
+      #         No such file or directory @ fptr_finalize - /sys/devices/bone_capemgr.9/slots
+      #       So modified the code not to close the file. 
+      # File.open(@slots_file_path, "a") do |file| 
+      #   file.write("am33xx_pwm")
+      #   file.write("bone_pwm_#{@pin_key}")
+      # end
+      File.open(@slots_file_path, "a").write("am33xx_pwm")
+      File.open(@slots_file_path, "a").write("bone_pwm_#{@pin_key}")      
     end
 
     # duty_cycle (value between 0 and 1)
