@@ -68,9 +68,15 @@ describe ObjectOrientedBeagleboneBlack::Pwm, pwm: true do
 
       expect(Dir.exists?(File.join(@device_directory, "pwm_test_#{pwm_pin_key}.15"))).to be true
 
+      # Set the duty cycle before period is modified:
+      pwm.duty_cycle = 0.5
+      expect(pwm.duty_cycle).to eq(0.5)
+
       pwm.period = 10000 # [ns]: nano second
 
       expect(pwm.period).to eq(10000)
+      # The duty cycle should be preserved: 
+      expect(pwm.duty_cycle).to eq(0.5)
 
     end
 
@@ -90,10 +96,10 @@ describe ObjectOrientedBeagleboneBlack::Pwm, pwm: true do
 
       expect(pwm.period).to eq(1000)
 
-      pwm.duty_cycle = 0.5
+      pwm.duty_cycle = 0.25
 
       expect(pwm.polarity).to eq(ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT)
-      expect(pwm.duty_cycle).to eq(0.5)      
+      expect(pwm.duty_cycle).to eq(0.25)      
 
     end
 

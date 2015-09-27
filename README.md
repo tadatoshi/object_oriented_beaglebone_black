@@ -1,6 +1,6 @@
 # ObjectOrientedBeagleboneBlack
 
-This is for using Beaglebone Black in Object-Oriented way through Ruby code. 
+This is for using BeagleBone Black in Object-Oriented way through Ruby code. 
 
 There are many Ruby projects in GitHub to do a similar thing. 
 But I have decided to develop my own from scratch this time instead of using an existing one like I always do.
@@ -50,63 +50,64 @@ Or install it yourself as:
 
 ## Usage
 
-1. GPIO. 
+1. GPIO 
 
    Example:
 
-   require 'object_oriented_beaglebone_black'
+    require 'object_oriented_beaglebone_black'
 
-   led_gpio_pin_number = 60
-   button_gpio_pin_number = 15
+    led_gpio_pin_number = 60
+    button_gpio_pin_number = 15
 
-   led_gpio = ObjectOrientedBeagleboneBlack::Gpio.new(led_gpio_pin_number)
+    led_gpio = ObjectOrientedBeagleboneBlack::Gpio.new(led_gpio_pin_number)
 
-   led_gpio.export
+    led_gpio.export
 
-   led_gpio.direction = ObjectOrientedBeagleboneBlack::IO::Direction::OUT
+    led_gpio.direction = ObjectOrientedBeagleboneBlack::IO::Direction::OUT
 
-   led_gpio.value = ObjectOrientedBeagleboneBlack::IO::Value::HIGH
+    led_gpio.value = ObjectOrientedBeagleboneBlack::IO::Value::HIGH
 
-   led_gpio.value  # Read the value. HIGH (1) as set above. 
+    led_gpio.value  # Read the value. HIGH (1) as set above. 
 
-   led_gpio.value = ObjectOrientedBeagleboneBlack::IO::Value::LOW
+    led_gpio.value = ObjectOrientedBeagleboneBlack::IO::Value::LOW
 
-   led_gpio.value  # Read the value. LOW (0) as set above. 
+    led_gpio.value  # Read the value. LOW (0) as set above. 
 
-   led_gpio.unexport
+    led_gpio.unexport
 
 2. Analog input
+
    Example:
 
-   require 'object_oriented_beaglebone_black'
+    require 'object_oriented_beaglebone_black'
 
-   pin_key = "P9_40"
+    pin_key = "P9_40"
 
-   analog_input = ObjectOrientedBeagleboneBlack::AnalogInput.new(pin_key)
+    analog_input = ObjectOrientedBeagleboneBlack::AnalogInput.new(pin_key)
 
-   analog_input.raw_value  # Read the raw voltage value in the range of 0 and 1.8[V].
+    analog_input.raw_value  # Read the raw voltage value in the range of 0 and 1.8[V].
 
-   analog_input.value  # Read the relative value between 0 and 1. 
+    analog_input.value  # Read the relative value between 0 and 1. 
 
 3. PWM
 
    Example: 
 
-   require 'object_oriented_beaglebone_black'
+    require 'object_oriented_beaglebone_black'
 
-   pwm_pin_key = "P9_14"
+    pwm_pin_key = "P9_14"
 
-   pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
+    pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
 
-   pwm.period = 1000 # Unit is \[ns\] (nano second)
+    pwm.period = 1000 # Unit is \[ns\] (nano second)
 
-   pwm.period  # Read the period. 1000[ns] as set above.    
+    pwm.period  # Read the period. 1000[ns] as set above.    
 
-   pwm.duty_cycle = 0.5
+    pwm.duty_cycle = 0.5
 
-   pwm.polarity  # Read the polarity. The default is direct (ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT)
+    pwm.polarity  # Read the polarity. The default is direct (ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT)
 
-   pwm.duty_cycle  # Read the duty cycle. 0.5 as set above. 
+    pwm.duty_cycle  # Read the duty cycle. 0.5 as set above. 
 
 ## Contributing
 

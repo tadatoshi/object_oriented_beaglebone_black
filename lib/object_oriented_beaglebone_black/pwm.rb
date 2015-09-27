@@ -56,7 +56,14 @@ module ObjectOrientedBeagleboneBlack
     end
 
     def period=(period)
+      current_duty_cycle = self.duty_cycle
+
       File.open(File.join(pwm_directory, "period"), "w") { |file| file.write(period) }
+      
+      # Preserves the duty cycle:
+      # Note: Internally in BeagleBone Black, "duty" value is relative to "period" value. 
+      #       e.g. For "period" = 1000, "duty" = 500 gives the duty cycle = 500 / 1000 = 0.5.
+      self.duty_cycle = current_duty_cycle
     end
 
     # Unit: [ns] (nano second)
