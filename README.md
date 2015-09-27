@@ -104,7 +104,7 @@ Or install it yourself as:
 
     pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
 
-    pwm.period = 1000 # Unit is \[ns\] (nano second)
+    pwm.period = 1000 # Unit is [ns] (nano second)
 
     pwm.period  # Read the period. 1000[ns] as set above.    
 
