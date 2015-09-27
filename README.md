@@ -54,6 +54,7 @@ Or install it yourself as:
 
    Example:
 
+       ```ruby
        require 'object_oriented_beaglebone_black'
 
        led_gpio_pin_number = 60
@@ -74,11 +75,13 @@ Or install it yourself as:
        led_gpio.value  # Read the value. LOW (0) as set above. 
 
        led_gpio.unexport
+       ```
 
 2. Analog input
 
    Example:
 
+       ```ruby
        require 'object_oriented_beaglebone_black'
 
        pin_key = "P9_40"
@@ -88,11 +91,13 @@ Or install it yourself as:
        analog_input.raw_value  # Read the raw voltage value in the range of 0 and 1.8[V].
 
        analog_input.value  # Read the relative value between 0 and 1. 
+       ```
 
 3. PWM
 
    Example: 
-
+ 
+       ```ruby
        require 'object_oriented_beaglebone_black'
 
        pwm_pin_key = "P9_14"
@@ -108,6 +113,7 @@ Or install it yourself as:
        pwm.polarity  # Read the polarity. The default is direct (ObjectOrientedBeagleboneBlack::Pwm::Polarity::DIRECT)
 
        pwm.duty_cycle  # Read the duty cycle. 0.5 as set above. 
+       ```
 
 ## Contributing
 

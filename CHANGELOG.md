@@ -32,4 +32,4 @@ There is no 0.1.0. I simply made a mistake to change the version to 0.2.0, after
     e.g. For the example above, 
          When "period" is modified to be 10000, "duty" is modified to be 5000, which gives the duty cycle 5000 / 10000 = 0.5. 
           
-  Note: This can be considered to be incompatible API change. However, at this point, it is not yet considered to be a stable public API. Hence, the MAJOR version is kept to be 0. (See, "Semantic Versioning" http://semver.org/)
+  Note: This can be considered to be incompatible API change. However, at this point, it is not yet considered to be a stable public API. Hence, the MAJOR version is kept to be 0. (See, [Semantic Versioning](http://semver.org/))
