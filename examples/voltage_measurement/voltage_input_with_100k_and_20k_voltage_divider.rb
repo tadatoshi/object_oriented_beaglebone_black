@@ -4,8 +4,8 @@ module VoltageMeasurement
   class VoltageInputWith100kAnd20kVoltageDivider < VoltageInput
 
     def value
-      # For voltage divider 6:1, e.g. 100[kΩ] and 20[kΩ]. 
-      (@analog_input.raw_value * BigDecimal("6")).to_f
+      # For voltage divider 6:1, i.e. 100[kΩ] and 20[kΩ]. 
+      (BigDecimal(@analog_input.raw_value.to_s) * BigDecimal("6")).to_f
     end
 
   end

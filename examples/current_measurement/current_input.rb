@@ -9,7 +9,7 @@ module CurrentMeasurement
 
     def value
       # Conversion for ACS712 Breakout. If a different current measurement device is used, extract this code to subclass and make this class parent class.
-      (@analog_input.raw_value / BigDecimal("0.185")).to_f
+      (BigDecimal(@analog_input.raw_value.to_s) / BigDecimal("0.185")).to_f
     end
 
   end
