@@ -14,7 +14,11 @@ module ObjectOrientedBeagleboneBlack
     def activate_device_tree_overlays
       # Note: Since slots file acts as an interface to activate Device Tree Overlay, simply writing to it does what needs to be done. 
       #       I'm using appending here so that testing in a local environment becomes straightfoward. 
-      File.open(@slots_file_path, "a") { |file| file.write("cape-bone-iio") }
+      # Note: Closing this file caused an error in BeagleBone Black:
+      #       Errno::EEXIST: File exists @ fptr_finalize - /sys/devices/bone_capemgr.9/slots
+      #       So modified the code not to close the file. 
+      # File.open(@slots_file_path, "a") { |file| file.write("cape-bone-iio") }
+      File.open(@slots_file_path, "a").write("cape-bone-iio")
     end
 
     def raw_value

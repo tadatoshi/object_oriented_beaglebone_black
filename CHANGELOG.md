@@ -1,19 +1,3 @@
-## object_oriented_beaglebone_black 0.0.2 (December 26, 2014) ##
-
-* GPIO
-
-* Analog input
-
-* PWM
-
-## object_oriented_beaglebone_black 0.1.0 ##
-
-There is no 0.1.0. I simply made a mistake to change the version to 0.2.0, after changing the version to 0.1.1 in one commit. 
-
-## object_oriented_beaglebone_black 0.2.0 (September 26, 2015) ##
-
-* PWM period can be set and read.
-
 ## object_oriented_beaglebone_black 0.2.1 (September 27, 2015) ##
 
 * When the PWM period is set, the internal "duty" value is modified automatically to keep the same duty cycle. 
@@ -33,3 +17,19 @@ There is no 0.1.0. I simply made a mistake to change the version to 0.2.0, after
          When "period" is modified to be 10000, "duty" is modified to be 5000, which gives the duty cycle 5000 / 10000 = 0.5. 
           
   Note: This can be considered to be incompatible API change. However, at this point, it is not yet considered to be a stable public API. Hence, the MAJOR version is kept to be 0. (See, [Semantic Versioning](http://semver.org/))
+
+## object_oriented_beaglebone_black 0.2.0 (September 26, 2015) ##
+
+* PWM period can be set and read.
+
+## object_oriented_beaglebone_black 0.1.0 ##
+
+There is no 0.1.0. I simply made a mistake to change the version to 0.2.0, after changing the version to 0.1.1 in one commit. 
+
+## object_oriented_beaglebone_black 0.0.2 (December 26, 2014) ##
+
+* GPIO
+
+* Analog input
+
+* PWM
