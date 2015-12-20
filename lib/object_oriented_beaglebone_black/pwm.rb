@@ -24,8 +24,9 @@ module ObjectOrientedBeagleboneBlack
       puts "This can take several seconds for necessary setups..."
 
       slots_file = File.open(@slots_file_path, "a+")
-      # slots_file_content = slots_file.read
+      slots_file_content = slots_file.read
 
+      unless slots_file_content.include? PWM_DEVICE_TREE_OVERLAY_PARAMETER
       # until slots_file_content.include? PWM_DEVICE_TREE_OVERLAY_PARAMETER
 
         # Just in case where the previous read session is not fully completed.
@@ -39,7 +40,7 @@ module ObjectOrientedBeagleboneBlack
         # Note: Sometime, the file pointer seems to be at the end of the file and doesn't read the file content before that. 
         # slots_file_content = slots_file.read
 
-      # end
+      end
 
       # Note: Closing this file sometimes causes an error in BeagleBone Black:
       #   Errno::ENOENT: No such file or directory @ fptr_finalize - /sys/devices/bone_capemgr.9/slots
@@ -57,8 +58,9 @@ module ObjectOrientedBeagleboneBlack
       pwm_pin_device_tree_overlay_parameter = "bone_pwm_#{@pin_key}"
 
       slots_file = File.open(@slots_file_path, "a+")
-      # slots_file_content = slots_file.read
+      slots_file_content = slots_file.read
 
+      unless slots_file_content.include? pwm_pin_device_tree_overlay_parameter
       # until slots_file_content.include? pwm_pin_device_tree_overlay_parameter
 
         # Just in case where the previous read session is not fully completed.
@@ -72,7 +74,7 @@ module ObjectOrientedBeagleboneBlack
         # Note: Sometime, the file pointer seems to be at the end of the file and doesn't read the file content before that.
         # slots_file_content = slots_file.read
 
-      # end
+      end
 
       # Note: Closing this file sometimes causes an error in BeagleBone Black:
       #   Errno::ENOENT: No such file or directory @ fptr_finalize - /sys/devices/bone_capemgr.9/slots

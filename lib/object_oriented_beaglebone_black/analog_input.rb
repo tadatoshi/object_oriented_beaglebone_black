@@ -20,8 +20,9 @@ module ObjectOrientedBeagleboneBlack
       puts "This can take a few seconds for necessary setups..."
 
       slots_file = File.open(@slots_file_path, "a+")
-      # slots_file_content = slots_file.read
+      slots_file_content = slots_file.read
 
+      unless slots_file_content.include? ANALOG_INPUT_DEVICE_TREE_OVERLAY_PARAMETER
       # until slots_file_content.include? ANALOG_INPUT_DEVICE_TREE_OVERLAY_PARAMETER
 
         # Just in case where the previous read operation is not fully terminated.
@@ -34,7 +35,7 @@ module ObjectOrientedBeagleboneBlack
 
         # Note: Sometime, the file pointer seems to be at the end of the file and doesn't read the file content before that.
         # slots_file_content = slots_file.read
-      # end
+      end
 
       # Note: Closing this file sometimes causes an error in BeagleBone Black:
       #       Errno::EEXIST: File exists @ fptr_finalize - /sys/devices/bone_capemgr.9/slots
