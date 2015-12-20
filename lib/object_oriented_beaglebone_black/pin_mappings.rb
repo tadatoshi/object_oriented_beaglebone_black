@@ -14,9 +14,9 @@ module ObjectOrientedBeagleboneBlack
       load_pin_index_array
 
       if !name.nil?
-        ::OBJECT_ORIENTED_BEAGLEBONE_BLACK_PIN_INDEX_ARRAY.select { |property_hash| property_hash["name"] == name }.first
+        ::OBJECT_ORIENTED_BEAGLEBONE_BLACK_PIN_INDEX_ARRAY.find { |property_hash| property_hash["name"] == name }
       elsif !key.nil?
-        ::OBJECT_ORIENTED_BEAGLEBONE_BLACK_PIN_INDEX_ARRAY.select { |property_hash| property_hash["key"] == key }.first
+        ::OBJECT_ORIENTED_BEAGLEBONE_BLACK_PIN_INDEX_ARRAY.find { |property_hash| property_hash["key"] == key }
       end
 
     end

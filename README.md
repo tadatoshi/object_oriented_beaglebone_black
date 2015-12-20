@@ -86,6 +86,7 @@ Or install it yourself as:
 
     pin_key = "P9_40"
 
+    # This can take a few seconds:
     analog_input = ObjectOrientedBeagleboneBlack::AnalogInput.new(pin_key)
 
     analog_input.raw_value  # Read the raw voltage value in the range of 0 and 1.8[V].
@@ -102,6 +103,7 @@ Or install it yourself as:
 
     pwm_pin_key = "P9_14"
 
+    # This can take several seconds:
     pwm = ObjectOrientedBeagleboneBlack::Pwm.new(pwm_pin_key)
 
     pwm.period = 1000 # Unit is [ns] (nano second)

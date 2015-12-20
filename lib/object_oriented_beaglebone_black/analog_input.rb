@@ -4,6 +4,8 @@ module ObjectOrientedBeagleboneBlack
   class AnalogInput
     include ObjectOrientedBeagleboneBlack::PinMappings
 
+    ANALOG_INPUT_DEVICE_TREE_OVERLAY_PARAMETER = "cape-bone-iio"
+
     def initialize(pin_key)
       @pin_key = pin_key
       @slots_file_path = File.join(File.join(OBJECT_ORIENTED_BEAGLEBONE_BLACK_CONFIG["slots_directory"], "slots"))
@@ -14,11 +16,36 @@ module ObjectOrientedBeagleboneBlack
     def activate_device_tree_overlays
       # Note: Since slots file acts as an interface to activate Device Tree Overlay, simply writing to it does what needs to be done. 
       #       I'm using appending here so that testing in a local environment becomes straightfoward. 
-      # Note: Closing this file caused an error in BeagleBone Black:
+
+      puts "This can take a few seconds for necessary setups..."
+
+      slots_file = File.open(@slots_file_path, "a+")
+      # slots_file_content = slots_file.read
+
+      # until slots_file_content.include? ANALOG_INPUT_DEVICE_TREE_OVERLAY_PARAMETER
+
+        # Just in case where the previous read operation is not fully terminated.
+        sleep 1
+
+        slots_file.write(ANALOG_INPUT_DEVICE_TREE_OVERLAY_PARAMETER)
+
+        # Just in case where it takes time to load device tree overlay.
+        sleep 1
+
+        # Note: Sometime, the file pointer seems to be at the end of the file and doesn't read the file content before that.
+        # slots_file_content = slots_file.read
+      # end
+
+      # Note: Closing this file sometimes causes an error in BeagleBone Black:
       #       Errno::EEXIST: File exists @ fptr_finalize - /sys/devices/bone_capemgr.9/slots
-      #       So modified the code not to close the file. 
-      # File.open(@slots_file_path, "a") { |file| file.write("cape-bone-iio") }
-      File.open(@slots_file_path, "a").write("cape-bone-iio")
+      begin
+        slots_file.close if File.exist?(@slots_file_path) && !slots_file.closed?
+      rescue SystemCallError => system_call_error_message
+        puts "Error happened while closing #{@slots_file_path} with the message: #{system_call_error_message}"
+      end
+
+      puts "Setups done."
+
     end
 
     def raw_value
