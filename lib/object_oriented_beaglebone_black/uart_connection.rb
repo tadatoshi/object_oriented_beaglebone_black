@@ -46,7 +46,7 @@ module ObjectOrientedBeagleboneBlack
 
     end
 
-    def read(serial_baud_rate: 9600, serial_data_bits: 8, serial_stop_bits: 1)
+    def read(serial_baud_rate: 9600, serial_data_bits: 8, serial_stop_bits: 1, communication_command: 's')
 
       data = nil
 
@@ -56,6 +56,9 @@ module ObjectOrientedBeagleboneBlack
                       serial_stop_bits, 
                       PARITY) do |serial_port|
         serial_port.sync = true
+
+        serial_port.putc(communication_command)
+
         data = serial_port.gets
       end   
 

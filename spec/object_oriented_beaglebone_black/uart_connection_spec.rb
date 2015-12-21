@@ -29,7 +29,7 @@ describe "ObjectOrientedBeagleboneBlack::UartConnection" do
     uart_connection = ObjectOrientedBeagleboneBlack::UartConnection.new(uart_id)
 
     # TODO: The following requires serial connection. Find a way to test it. 
-    # uart_connection.read(serial_baud_rate: 9600, serial_data_bits: 8, serial_stop_bits: 1)
+    # uart_connection.read(serial_baud_rate: 9600, serial_data_bits: 8, serial_stop_bits: 1, communication_command: 's')
 
   end
 
