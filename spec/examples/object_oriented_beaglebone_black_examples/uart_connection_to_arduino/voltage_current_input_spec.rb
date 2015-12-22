@@ -26,7 +26,7 @@ describe "Extract voltage and current from the measured values by Arduino Due th
 
     uart_id = "UART4"
     # The parameters for Arduino Due:
-    analog_steps = BigDecimal("1023")
+    analog_steps = BigDecimal("4095")
     reference_voltage = BigDecimal("3.3")
 
     uart_connection_double = double("UART4 connection")
@@ -37,7 +37,7 @@ describe "Extract voltage and current from the measured values by Arduino Due th
     voltage_current_input.instance_variable_set(:@uart_connection, uart_connection_double)
 
     expect(uart_connection_double).to receive(:read).with(serial_baud_rate: 9600, serial_data_bits: 8, serial_stop_bits: 1, communication_command: 'm') do
-                                        "{\"raw_reading_for_input_voltage\": 134, \"raw_reading_for_input_current\": 1, \"raw_reading_for_output_voltage\": 70}" 
+                                        "{\"raw_reading_for_input_voltage\": 534, \"raw_reading_for_input_current\": 5, \"raw_reading_for_output_voltage\": 281}" 
                                       end
 
     voltage_current_input.measure
