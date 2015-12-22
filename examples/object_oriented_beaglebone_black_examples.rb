@@ -1,0 +1,9 @@
+require 'object_oriented_beaglebone_black'
+
+require 'object_oriented_beaglebone_black_examples/voltage_current_calculation'
+require 'object_oriented_beaglebone_black_examples/current_measurement'
+require 'object_oriented_beaglebone_black_examples/voltage_measurement'
+
+module ObjectOrientedBeagleboneBlackExamples
+  # Your code goes here...
+end
