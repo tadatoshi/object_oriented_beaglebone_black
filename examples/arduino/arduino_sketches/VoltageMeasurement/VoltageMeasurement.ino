@@ -9,8 +9,6 @@ const int inputCurrentPin = 1;
 const int outputVoltagePin = 2;
 const int outputCurrentPin = 3;
 
-boolean dutyCycleFixed = false;
-
 void setup() {
   Serial.begin(9600, SERIAL_8N1); // send and receive at 9600 baud 
 }
