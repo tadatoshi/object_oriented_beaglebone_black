@@ -66,6 +66,22 @@ module ObjectOrientedBeagleboneBlack
 
     end
 
+    def write(serial_baud_rate: 9600, serial_data_bits: 8, serial_stop_bits: 1, communication_command: 's')
+
+      data = nil
+
+      SerialPort.open(teletype_device_path, 
+                      serial_baud_rate, 
+                      serial_data_bits, 
+                      serial_stop_bits, 
+                      PARITY) do |serial_port|
+        serial_port.sync = true
+
+        serial_port.puts(communication_command)
+      end
+
+    end    
+
     private
       def device_tree_overlay_parameter
         @device_tree_overlay_parameter ||= property_hash(id: @uart_id)["devicetree"]

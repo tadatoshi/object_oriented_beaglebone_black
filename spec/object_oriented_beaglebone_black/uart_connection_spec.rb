@@ -33,4 +33,15 @@ describe "ObjectOrientedBeagleboneBlack::UartConnection" do
 
   end
 
+  it "should write the value through the specified UART connection" do
+
+    uart_id = "UART4"
+    
+    uart_connection = ObjectOrientedBeagleboneBlack::UartConnection.new(uart_id)
+
+    # TODO: The following requires serial connection. Find a way to test it. 
+    # uart_connection.write(serial_baud_rate: 9600, serial_data_bits: 8, serial_stop_bits: 1, communication_command: 'p127')    
+
+  end
+
 end
