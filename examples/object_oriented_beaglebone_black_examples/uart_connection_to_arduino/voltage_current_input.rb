@@ -5,8 +5,8 @@ module ObjectOrientedBeagleboneBlackExamples
   module UartConnectionToArduino
     class VoltageCurrentInput
 
-      def initialize(uart_id, analog_steps, reference_voltage)
-        @uart_connection = ObjectOrientedBeagleboneBlack::UartConnection.new(uart_id)
+      def initialize(uart_connection, analog_steps, reference_voltage)
+        @uart_connection = uart_connection
         @voltage_current_calculation = VoltageCurrentCalculation.new(analog_steps, reference_voltage)
       end
 

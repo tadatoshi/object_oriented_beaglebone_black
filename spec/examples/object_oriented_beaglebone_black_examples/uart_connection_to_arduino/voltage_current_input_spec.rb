@@ -29,12 +29,9 @@ describe "Extract voltage and current from the measured values by Arduino Due th
     analog_steps = BigDecimal("4095")
     reference_voltage = BigDecimal("3.3")
 
-    uart_connection_double = double("UART4 connection")
+    uart_connection_double = double(uart_id)
     
-    voltage_current_input = ObjectOrientedBeagleboneBlackExamples::UartConnectionToArduino::VoltageCurrentInput.new(uart_id, analog_steps, reference_voltage)
-
-    # Use test double instead of real UartConnection object which requires actual serial connection:
-    voltage_current_input.instance_variable_set(:@uart_connection, uart_connection_double)
+    voltage_current_input = ObjectOrientedBeagleboneBlackExamples::UartConnectionToArduino::VoltageCurrentInput.new(uart_connection_double, analog_steps, reference_voltage)
 
     expect(uart_connection_double).to receive(:read).with(serial_baud_rate: 9600, serial_data_bits: 8, serial_stop_bits: 1, communication_command: 'm') do
                                         "{\"raw_reading_for_input_voltage\": 534, \"raw_reading_for_input_current\": 5, \"raw_reading_for_output_voltage\": 281}" 
