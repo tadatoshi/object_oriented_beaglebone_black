@@ -1,6 +1,8 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+examples = File.expand_path('../examples', __FILE__)
+$LOAD_PATH.unshift(examples) unless $LOAD_PATH.include?(examples)
 require 'object_oriented_beaglebone_black/version'
 
 Gem::Specification.new do |spec|
